@@ -168,7 +168,31 @@ class AddNoteBottonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 30.h,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+               // borderSide: BorderSide(color: Colors.red)
+              ),
+              hintText: 'title',
+              hintStyle: TextStyle(
+                color: Colors.purpleAccent[100]
+              )
+            ),
+            
+          ),
+        ],
+      ),
+    );
   }
 }
 
