@@ -172,25 +172,71 @@ class AddNoteBottonSheet extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: 16
       ),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 30.h,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.r),
-               // borderSide: BorderSide(color: Colors.red)
-              ),
-              hintText: 'title',
-              hintStyle: TextStyle(
-                color: Colors.purpleAccent[100]
-              )
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30.h,
             ),
-            
-          ),
-        ],
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.r),
+                 // borderSide: BorderSide(color: Colors.red)
+                ),
+                hintText: 'title',
+                hintStyle: TextStyle(
+                  color: Colors.purpleAccent[100]
+                )
+              ),
+
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                    // borderSide: BorderSide(color: Colors.red)
+                  ),
+                  hintText: 'content',
+
+                  hintStyle: TextStyle(
+                      color: Colors.purpleAccent[100],
+
+                  ),
+
+              ),
+              maxLines: 5,
+            ),
+            // Spacer(),
+            SizedBox(
+              height: 40.h,
+            ),
+            Container(
+              height: 40.h,
+              width: MediaQuery.sizeOf(context).width,
+              decoration: BoxDecoration(
+                color: Colors.purpleAccent,
+                borderRadius: BorderRadius.circular(10.r)
+              ),
+
+              child: Center(
+                child: Text(
+                  'Add',
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: Colors.black
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20.h,
+            )
+          ],
+        ),
       ),
     );
   }
