@@ -172,9 +172,18 @@ class NoteItem extends StatelessWidget {
 }
 
 
-class AddNoteBottonSheet extends StatelessWidget {
+class AddNoteBottonSheet extends StatefulWidget {
 
 
+  @override
+  State<AddNoteBottonSheet> createState() => _AddNoteBottonSheetState();
+}
+
+class _AddNoteBottonSheetState extends State<AddNoteBottonSheet> {
+
+  final GlobalKey<FormState> formkey=GlobalKey();
+  AutovalidateMode autovalidateMode=AutovalidateMode.disabled;
+  String? title,subtitle;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -182,74 +191,102 @@ class AddNoteBottonSheet extends StatelessWidget {
         horizontal: 16
       ),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 30.h,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                 // borderSide: BorderSide(color: Colors.red)
-                ),
-                hintText: 'title',
-                hintStyle: TextStyle(
-                  color: Colors.purpleAccent[100]
-                )
+        child: Form(
+          key: formkey,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 30.h,
               ),
-
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            TextField(
-              decoration: InputDecoration(
+              TextFormField(
+                onSaved: (value){
+                  title=value;
+                },
+                validator: (value){
+                  if(value?.isEmpty ??true)
+                    {
+                      return 'Field is required';
+                    }
+                },
+                decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.r),
-                    // borderSide: BorderSide(color: Colors.red)
+                   // borderSide: BorderSide(color: Colors.red)
                   ),
-                  hintText: 'content',
-
+                  hintText: 'title',
                   hintStyle: TextStyle(
-                      color: Colors.purpleAccent[100],
-
-                  ),
-
-              ),
-              maxLines: 5,
-            ),
-            // Spacer(),
-            SizedBox(
-              height: 40.h,
-            ),
-            GestureDetector(
-              onTap: (){
-                
-              },
-              child: Container(
-                height: 40.h,
-                width: MediaQuery.sizeOf(context).width,
-                decoration: BoxDecoration(
-                  color: Colors.purpleAccent,
-                  borderRadius: BorderRadius.circular(10.r)
+                    color: Colors.purpleAccent[100]
+                  )
                 ),
 
-                child: Center(
-                  child: Text(
-                    'Add',
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      color: Colors.black
+              ),
+              SizedBox(
+                height: 16.h,
+              ),
+              TextFormField(
+                onSaved: (value){
+                  subtitle=value;
+                },
+                validator: (value){
+                  if(value?.isEmpty?? true)
+                    {
+                      return 'Field is required';
+                    }
+                },
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.r),
+                      // borderSide: BorderSide(color: Colors.red)
+                    ),
+                    hintText: 'content',
+
+                    hintStyle: TextStyle(
+                        color: Colors.purpleAccent[100],
+
+                    ),
+
+                ),
+                maxLines: 5,
+              ),
+              // Spacer(),
+              SizedBox(
+                height: 40.h,
+              ),
+              GestureDetector(
+                onTap: (){
+                  if(formkey.currentState!.validate())
+                    {
+                      formkey.currentState!.save();
+                    }
+                  else
+                    {
+                      autovalidateMode=AutovalidateMode.always;
+                    }
+                },
+                child: Container(
+                  height: 40.h,
+                  width: MediaQuery.sizeOf(context).width,
+                  decoration: BoxDecoration(
+                    color: Colors.purpleAccent,
+                    borderRadius: BorderRadius.circular(10.r)
+                  ),
+
+                  child: Center(
+                    child: Text(
+                      'Add',
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: Colors.black
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20.h,
-            )
-          ],
+              SizedBox(
+                height: 20.h,
+              )
+            ],
+          ),
         ),
       ),
     );
