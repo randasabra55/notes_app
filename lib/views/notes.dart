@@ -9,6 +9,10 @@ class NotesViews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
      // appBar: AppBar(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add)
+      ),
       body: Column(
         children: [
           SizedBox(
@@ -71,7 +75,7 @@ class NoteItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(
         horizontal: 16,
-        vertical: 8
+        vertical: 5
       ),
       child: Container(
         // height: 200.h,
@@ -102,7 +106,7 @@ class NoteItem extends StatelessWidget {
                   'Flutter Tips',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                   //  fontWeight: GoogleFonts.poppins
 
                   ),
