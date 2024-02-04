@@ -47,10 +47,13 @@ class NotesViews extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-                itemBuilder: (context,index)=>NoteItem(),
-                itemCount: 1,
+                itemBuilder: (context,index)
+                {
+                  return NoteItem();
+                 },
+                itemCount: 5,
             ),
-          )
+          ),
 
         ],
       ),
@@ -67,7 +70,8 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(
-        horizontal: 16
+        horizontal: 16,
+        vertical: 8
       ),
       child: Container(
         // height: 200.h,
