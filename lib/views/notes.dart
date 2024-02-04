@@ -10,7 +10,14 @@ class NotesViews extends StatelessWidget {
     return Scaffold(
      // appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          showModalBottomSheet(
+              context: context,
+              builder: (context){
+                return AddNoteBottonSheet();
+              }
+          );
+        },
         child: Icon(Icons.add)
       ),
       body: Column(
@@ -50,12 +57,18 @@ class NotesViews extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: ListView.builder(
-                itemBuilder: (context,index)
-                {
-                  return NoteItem();
-                 },
-                itemCount: 5,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 16
+              ),
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                  itemBuilder: (context,index)
+                  {
+                    return NoteItem();
+                   },
+                  itemCount: 5,
+              ),
             ),
           ),
 
@@ -148,4 +161,15 @@ class NoteItem extends StatelessWidget {
     );
   }
 }
+
+
+class AddNoteBottonSheet extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 
