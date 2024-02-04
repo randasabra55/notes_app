@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NotesViews extends StatelessWidget {
 
@@ -44,8 +45,99 @@ class NotesViews extends StatelessWidget {
               ),
             ],
           ),
+          Expanded(
+            child: ListView.builder(
+                itemBuilder: (context,index)=>NoteItem(),
+                itemCount: 1,
+            ),
+          )
+
         ],
       ),
     );
   }
 }
+
+
+
+class NoteItem extends StatelessWidget {
+  //const NoteItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsetsDirectional.symmetric(
+        horizontal: 16
+      ),
+      child: Container(
+        // height: 200.h,
+        // width: 200.w,
+        padding: EdgeInsetsDirectional.only(
+          top: 20.h,
+          bottom: 20.h,
+          start: 10.w
+        //  horizontal: 20.w,
+        //  vertical: 20.h
+        ),
+        decoration: BoxDecoration(
+          color: Color(0xffFFCC80),
+          borderRadius: BorderRadius.circular(10.r)
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ListTile(
+
+
+
+              title: Padding(
+                padding: const EdgeInsetsDirectional.only(
+                  bottom: 16
+                ),
+                child: Text(
+                  'Flutter Tips',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.sp,
+                  //  fontWeight: GoogleFonts.poppins
+
+                  ),
+                ),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsetsDirectional.only(
+                  bottom: 16
+                ),
+                child: Text(
+                  'Build your career with ranoda',
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(.5),
+                    fontSize: 12.sp,
+                  ),
+                ),
+              ),
+              trailing: IconButton(
+                onPressed: (){},
+                icon: Icon(Icons.delete,color: Colors.black,size: 16.sp,),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.only(
+                end: 24
+              ),
+              child: Text(
+                'May21 , 2022',
+                style: TextStyle(
+                  color: Colors.black.withOpacity(.4),
+                  fontSize: 8.sp
+
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
