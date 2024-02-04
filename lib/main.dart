@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:note_app/home.dart';
+import 'package:note_app/views/notes.dart';
 
 void main() {
   runApp(const NoteApp());
@@ -11,7 +12,18 @@ class NoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ScreenUtilInit(
+      designSize :Size(200, 650),
+      splitScreenMode :true,
+      minTextAdapt :true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark
+        ),
+        home: NotesViews(),
+      ),
+    );
   }
 }
 
